@@ -1,5 +1,4 @@
-[
-	{
+[{
 		"name": "Rare",
 		"singer": "Selena Gomez",
 		"album": "Rare",
@@ -17,4 +16,5 @@
 		"cover": "./source/Anxiety.jpg",
 		"link_lrc": "./source/Anxiety.txt"
 	}
+
 ]
