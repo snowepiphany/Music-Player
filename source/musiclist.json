@@ -15,6 +15,24 @@
 		"link_url": "./source/Anxiety.m4a",
 		"cover": "./source/Anxiety.jpg",
 		"link_lrc": "./source/Anxiety.txt"
+	},
+	{
+		"name": "Rare",
+		"singer": "Gomez",
+		"album": "Rare",
+		"time": "03:40",
+		"link_url": "./source/Rare.m4a",
+		"cover": "./source/Rare.jpg",
+		"link_lrc": "./source/Rare.txt"
+	},
+	{
+		"name": "Anxiety",
+		"singer": "Julia Michaels / Selena Gomez",
+		"album": "Inner Monologue Part 1",
+		"time": "03:30",
+		"link_url": "./source/Anxiety.m4a",
+		"cover": "./source/Anxiety.jpg",
+		"link_lrc": "./source/Anxiety.txt"
 	}
 
 ]
