@@ -17,6 +17,15 @@
 		"link_lrc": "./source/Anxiety.txt"
 	},
 	{
+		"name": "平凡之路",
+		"singer": "朴树",
+		"album": "猎户星座",
+		"time": "05:01",
+		"link_url": "./source/平凡之路.mp3",
+		"cover": "./source/平凡之路.jpg",
+		"link_lrc": "./source/平凡之路.txt"
+	},
+	{
 		"name": "Rare",
 		"singer": "Gomez",
 		"album": "Rare",
@@ -33,6 +42,15 @@
 		"link_url": "./source/Anxiety.m4a",
 		"cover": "./source/Anxiety.jpg",
 		"link_lrc": "./source/Anxiety.txt"
+	},
+	{
+		"name": "平凡之路",
+		"singer": "朴树",
+		"album": "猎户星座",
+		"time": "05:01",
+		"link_url": "./source/平凡之路.mp3",
+		"cover": "./source/平凡之路.png",
+		"link_lrc": "./source/平凡之路.txt"
 	}
 
 ]

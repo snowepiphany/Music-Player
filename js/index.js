@@ -8,7 +8,7 @@ $(function () {
     var voiceProgress;
     var lyric;
 
-    initProgress()
+    initProgress();
 
     function initProgress() {
         // 音乐播放进度控制
@@ -121,9 +121,24 @@ $(function () {
         });
 
         //2.监听复选框的点击事件
+        // 选中
         $(".content_list").delegate(".list_check", "click", function () {
             $(this).toggleClass("list_checked");
         });
+
+        // // 全选/全不选
+        // $('.list_title>.list_check').click(function () {
+        //     $('.list_music').find('.list_check').toggleClass('list_checked');
+        // })
+
+        // 全选/全不选
+        $(".list_title>.list_check").click(function () {
+            if ($(this).parent().siblings().hasClass("list_checked")) {
+                $(this).parent().siblings().find(".list_checked").removeClass("list_checked");
+            }
+            $(this).parent().siblings().toggleClass("list_checked");
+
+        })
 
         //3.监听子菜单播放按钮的监听
         var $musicPlay = $(".music_play");
@@ -170,7 +185,10 @@ $(function () {
                 $(".list_music").eq(0).find(".list_menu_play").trigger("click");
             } else {
                 //已经播放过音乐
-                $(".list_music").eq(player.currentIndex).find(".list_menu_play").trigger("click");
+                $(".list_music")
+                    .eq(player.currentIndex)
+                    .find(".list_menu_play")
+                    .trigger("click");
             }
         });
 
@@ -195,7 +213,7 @@ $(function () {
             // 找到被点击的音乐
             var $item = $(this).parents(".list_music");
 
-            // 判断当前删除的是否是正在播放的
+            // 判断当前播放的音乐是否是当前正在播放的音乐
             if ($item.get(0).index == player.currentIndex) {
                 $(".music_next").trigger("click");
             }
@@ -204,7 +222,7 @@ $(function () {
             player.changeMusic($item.get(0).index);
 
             // 重新排序
-            $(".list_menu").each(function (index, ele) {
+            $(".list_music").each(function (index, ele) {
                 ele.index = index;
                 $(ele)
                     .find(".list_number")
@@ -243,7 +261,7 @@ $(function () {
                 // 有声音
                 player.musicVoiceSeekTo(1);
             }
-        })
+        });
 
         // 10.监听纯净按钮的点击
         $(".music_only").click(function () {
@@ -253,10 +271,53 @@ $(function () {
         // 11.监听收藏按钮的点击
         $(".music_fav").click(function () {
             $(this).toggleClass("music_fav2");
-        })
+        });
 
+        // 12.监听 清空列表 按钮
+        $(".del_all").click(function () {
+            $(".list_music").remove();
+        });
+
+        $(".list_title>.list_check").click(function () {
+            $(this).parent().siblings(".list_check").toggleClass(".list_checked");
+        });
+        // 13.监听 list_title里的 删除 按钮
+        $(".del_checked").click(function () {
+            console.log($(".list_checked"));
+            $(".list_checked").parent().remove();
+            // 重新排序
+            $(".list_music").each(function (index, ele) {
+                ele.index = index;
+                $(ele)
+                    .find(".list_number")
+                    .text(index + 1);
+            });
+        });
+
+        // 监听播放模式按钮
+        var mode = $(".music_mode");
+
+        function replaceClass($obj, c1, c2) {
+            $obj.removeClass(c1);
+            $obj.addClass(c2);
+        }
+
+        mode.click(function () {
+            if ($(this).hasClass("music_mode")) {
+                replaceClass($(this), "music_mode", "music_mode2");
+                $(this).attr("title", "列表循环");
+            } else if ($(this).hasClass("music_mode2")) {
+                replaceClass($(this), "music_mode2", "music_mode3");
+                $(this).attr("title", "随机播放");
+            } else if ($(this).hasClass("music_mode3")) {
+                replaceClass($(this), "music_mode3", "music_mode4");
+                $(this).attr("title", "单曲循环");
+            } else {
+                replaceClass($(this), "music_mode4", "music_mode");
+                $(this).attr("title", "循序播放");
+            }
+        });
     }
-
 
     //定义一个方法创建一条音乐
     function createMusicItem(index, music) {
